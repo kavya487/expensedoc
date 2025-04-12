@@ -76,8 +76,8 @@ VALIDATE $? "setting up transaxtion shema "
 systemctl daemon-reload &>>$LOG_FILE_NAME
 VALIDATE $? "deamon relosd  "
 
-systemctl start backend &>>$LOG_FILE_NAME
+systemctl restart backend &>>$LOG_FILE_NAME
 VALIDATE $? "starting bckend "
 
 systemctl enable backend &>>$LOG_FILE_NAME
-VALIDATE $? "enabling backend "
+VALIDATE? "enabling backend "
