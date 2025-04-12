@@ -37,21 +37,18 @@ VALIDATE $? "disabling nodejs"
 
 dnf module enable nodejs:20 -y &>>$LOG_FILE_NAME
 VALIDATE $? "enabling nodejs"
+dnf install nodejs -y &>>$LOG_FILE_NAME
+VALIDATE $? "installing nodejs"
+
+
+id expense &>>$LOG_FILE_NAME
+if [ $? -ne 0 ]
 then 
     useradd expense &>>$LOG_FILE_NAME
     VALIDATE $? "adding expense user"
 else
     echo -e "expense user alredy exots  ... $Y skiipping $N"
     fi
-dnf install nodejs -y &>>$LOG_FILE_NAME
-VALIDATE $? "installing nodejs"
-
-id expense &>>$LOG_FILE_NAME
-if [ $? -ne 0 ]
-
-
-useradd expense &>>$LOG_FILE_NAME
-VALIDATE $? "adding user"
 
 mkdir /app &>>$LOG_FILE_NAME
 VALIDATE $? "creating app directory"
