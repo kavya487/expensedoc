@@ -20,12 +20,13 @@ VALIDATE(){
 }
 
 echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
-
+ECK_ROOT(){
 if [ $USERID -ne 0 ]
 then
     echo "ERROR:: You must have sudo access to execute this script"
     exit 1 #other than 0
 fi
+}
 
 dnf list installed mysql &>>$LOG_FILE_NAME
 
